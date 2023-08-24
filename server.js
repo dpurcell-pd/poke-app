@@ -30,8 +30,6 @@ app.post('/pokemon', (req, res) => {
     res.redirect("/pokemon");
 });
 
-
-
 app.get("/pokemon/:id", (req, res) => {
     res.render("Show", {
         pokemon: pokemon[req.params.id]

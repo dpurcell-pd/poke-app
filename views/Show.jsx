@@ -12,7 +12,7 @@ function Show({ pokemon }) {
     <div>
       <h1>Gotta Catch 'Em All</h1>
       <h2>{capitalize(pokemon.name)}</h2>
-      <img src={`${pokemon.img}.jpg`} alt={`${pokemon.name}`} />
+      <img src={`${pokemon.image}`} alt={`${pokemon.name}`} />
       <br />   <br />
       <a href="/pokemon">Back</a>
     </div>

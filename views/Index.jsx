@@ -10,6 +10,9 @@ function Index({ pokemon }) {
 
   return (
     <div>
+       <nav>
+        <a href="/pokemon/new">Create New Pokemon</a>
+      </nav>
       <h1>See All The Pokemon!</h1>
       {pokemon.map((pokemon, index) => {
         return (
