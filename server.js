@@ -5,7 +5,7 @@ const port = 3000;
 
 const mongoose = require('mongoose');
 const Pokemon = require('./models/pokemon.js');
-const manyPokemon = require('./models/manyPokemon.js');
+
 
 const mongoURI = process.env.MONGO_URI;
 const db = mongoose.connection;
@@ -29,9 +29,11 @@ app.get('/', (req, res) => {
     res.send("<h1>Welcome to the Pokemon App!</h1>")
 });
 
-app.get('/pokemon', (req, res) => {
+
+app.get('/pokemon', async (req, res) => {
+    const allPokemon = await Pokemon.find({});
     res.render("Index", {
-        pokemon: pokemon
+        pokemon: allPokemon
     });
 });
 
@@ -40,8 +42,14 @@ app.get('/pokemon/new', (req, res) => {
 });
 
 app.post('/pokemon', (req, res) => {
-    console.log(req.body);   
-    pokemon.push(req.body);   
+    Pokemon.create(req.body)
+    .then(pokemon => {
+        console.log(pokemon)
+    }).catch(error => {
+        console.log(error)
+    }).finally(() => {
+        db.close();
+    });
     res.redirect("/pokemon");
 });
 

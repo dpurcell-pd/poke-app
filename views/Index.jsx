@@ -17,7 +17,7 @@ function Index({ pokemon }) {
       {pokemon.map((pokemon, index) => {
         return (
           <li key={index}>
-            <a href={`/pokemon/${index}`}>{capitalize(pokemon.name)}</a>
+            <a href={`/pokemon/${id}`}>{capitalize(pokemon.name)}</a>
             <br />
           </li>
         );

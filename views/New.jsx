@@ -1,4 +1,15 @@
 import React from 'react'
+const manyPokemon = require('../models/manyPokemon.js');
+const Pokemon = require('../models/pokemon.js');
+
+Pokemon.insertMany(manyPokemon)
+.then(pokemon => {
+    console.log(pokemon)
+}).catch(error => {
+    console.log(error)
+}).finally(() => {
+    Pokemon.db.close();
+});
 
 function New() {
   return (
