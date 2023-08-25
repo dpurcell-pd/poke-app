@@ -15,8 +15,14 @@ const Schema = mongoose.Schema;
 const model = mongoose.model;
 
 const pokemonSchema = new Schema({
-    name: String,
-    image: String
+    name: {
+        type: String,
+        required: true
+    },
+    image: {
+        type: String, 
+        required: true
+    }
 });
 
 const Pokemon = model("Pokemon", pokemonSchema);
