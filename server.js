@@ -1,8 +1,22 @@
+require('dotenv').config();
 const express = require('express');
 const app = express();
 const port = 3000;
 
+const mongoose = require('mongoose');
 const pokemon = require('./models/pokemon.js');
+
+const mongoURI = process.env.MONGO_URI;
+const db = mongoose.connection;
+
+mongoose.connect(mongoURI, {
+    useNewURLParser: true,
+    useUnifiedTopology: true
+});
+
+db.on("error", (err) => console.log(err.message + " is mongod not running?"));
+db.on("open", () => console.log("mongo connected: ", mongoURI));
+db.on("close", () => console.log("mongo disconnected"));
 
 app.set("views", `${__dirname}/views`);
 app.set('view engine', 'jsx');
