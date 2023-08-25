@@ -8,11 +8,16 @@ function Show({ pokemon }) {
     return wordCapitalized;
   };
 
+  const formatImageSRC = (image) => {
+    const sourceName = image.includes('.jpg') ? image : image + '.jpg';
+    return sourceName;
+  }
+
   return (
     <div>
       <h1>Gotta Catch 'Em All</h1>
       <h2>{capitalize(pokemon.name)}</h2>
-      <img src={`${pokemon.image}`} alt={`${pokemon.name}`} />
+      <img src={`${formatImageSRC(pokemon.image)}`} alt={`${pokemon.name}`} />
       <br />   <br />
       <a href="/pokemon">Back</a>
     </div>
