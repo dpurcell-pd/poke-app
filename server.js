@@ -4,7 +4,8 @@ const app = express();
 const port = 3000;
 
 const mongoose = require('mongoose');
-const pokemon = require('./models/pokemon.js');
+const Pokemon = require('./models/pokemon.js');
+const manyPokemon = require('./models/manyPokemon.js');
 
 const mongoURI = process.env.MONGO_URI;
 const db = mongoose.connection;
